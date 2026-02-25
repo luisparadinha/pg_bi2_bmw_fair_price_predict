@@ -19,7 +19,6 @@ data/processed/
 
 # Models + outputs (will exist soon)
 models/
-reports/
 
 # OS junk
 .DS_Store

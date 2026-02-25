@@ -1,0 +1,19 @@
+{
+  "mae": 1513.6798095703125,
+  "rmse": 2618.4140237937927,
+  "n_rows": 10781,
+  "n_features": 8,
+  "numeric_cols": [
+    "year",
+    "mileage",
+    "tax",
+    "mpg",
+    "engineSize"
+  ],
+  "categorical_cols": [
+    "model",
+    "transmission",
+    "fuelType"
+  ],
+  "model_path": "/home/luisparadinha/posgrad/bi2_bmw_car_price/models/xgb_fair_price.joblib"
+}
