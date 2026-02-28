@@ -25,19 +25,16 @@ def main():
     pipe = joblib.load(model_path)
 
     X = df.drop(columns=[TARGET_COL])
-    df["predicted_price"] = pipe.predict(X)
-    df["undervalued"] = df["predicted_price"] - df[TARGET_COL]
-    df["estimated_profit"] = df["undervalued"] - FLIP_COST
-    df["deal_flag"] = df["estimated_profit"] > SAFETY_MARGIN
+    df["market_value"] = pipe.predict(X)
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     out_path = REPORTS_DIR / "deals.csv"
-    df.sort_values("estimated_profit", ascending=False).to_csv(out_path, index=False)
+    df.sort_values("market_value", ascending=False).to_csv(out_path, index=False)
 
     print("Wrote deals to:", out_path)
     print("Top 10 deals:")
-    print(df.sort_values("estimated_profit", ascending=False).head(10)[
-        [TARGET_COL, "predicted_price", "undervalued", "estimated_profit", "deal_flag"]
+    print(df.sort_values("market_value", ascending=False).head(10)[
+        [TARGET_COL, "market_value"]
     ])
 
 
