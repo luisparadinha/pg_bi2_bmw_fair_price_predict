@@ -28,7 +28,7 @@ def main():
     df["market_value"] = pipe.predict(X)
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = REPORTS_DIR / "deals.csv"
+    out_path = REPORTS_DIR / "market_value.csv"
     df.sort_values("market_value", ascending=False).to_csv(out_path, index=False)
 
     print("Wrote deals to:", out_path)
